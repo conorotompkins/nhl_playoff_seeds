@@ -35,3 +35,5 @@ df %>%
                      breaks = 0:16) +
   theme(panel.grid = element_blank())
 
+read_csv("data/20162017", skip = 2)
+?read_csv
