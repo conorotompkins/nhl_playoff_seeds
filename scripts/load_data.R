@@ -18,7 +18,7 @@ df <- data %>%
             losses=  sum(losses),
             gp = sum(gp))
   
-levels_season <- unique(df$season)
+levels_season <- unique(as.character(df$season))
 
 df <- df %>% 
   mutate(season = factor(season, levels = levels_season))
@@ -34,7 +34,6 @@ df %>%
                      breaks = 0:16) +
   theme(panel.grid = element_blank())
 
-?ls
 
 read_csv("data/playoff_seeding/20162017", skip = 2)
 ?read_csv
