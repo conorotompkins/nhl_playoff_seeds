@@ -1,7 +1,10 @@
 library(tidyverse)
 library(stringr)
 
-data <- read_tsv("nhl_playoff_results.txt")
+theme_set(theme_bw())
+
+
+data <- read_tsv("data/nhl_playoff_results.txt")
 
 colnames(data) <- tolower(colnames(data))
 
@@ -17,3 +20,18 @@ df <- data %>%
             gp = sum(gp))
   
 levels_season <- unique(df$season)
+
+df <- df %>% 
+  mutate(season = factor(season, levels = levels_season))
+
+df %>% 
+  count(wins, losses) %>% 
+  ggplot(aes(wins, losses, fill = n)) +
+  geom_tile() +
+  coord_equal() +
+  scale_x_continuous(expand = c(0,0),
+                     breaks = 0:16) +
+  scale_y_continuous(expand = c(0,0), 
+                     breaks = 0:16) +
+  theme(panel.grid = element_blank())
+
