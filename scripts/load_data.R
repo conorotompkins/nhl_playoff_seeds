@@ -1,6 +1,8 @@
 library(tidyverse)
 library(stringr)
 
+
+#data starts at 20072008
 theme_set(theme_bw())
 
 rm(list = ls())

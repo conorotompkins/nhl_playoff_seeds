@@ -1,7 +1,5 @@
 library(stringr)
 
-rm(list = ls())
-
 data_path <- "./data/playoff_seeding"
 
 data_list <- list.files(path = data_path)
@@ -26,4 +24,8 @@ data_list[1]
 team_seeds <- bind_rows(data_list, .id = "season") %>% 
   rename(rank = X1,
          team = X2,
-         points = X8)
+         points = X8) %>% 
+  filter(team != "League Average") %>% 
+  mutate(team = str_replace(team, "\\*", ""))
+
+
