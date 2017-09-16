@@ -3,6 +3,8 @@ library(stringr)
 
 theme_set(theme_bw())
 
+rm(list = ls())
+
 data <- read_tsv("data/nhl_playoff_results.txt")
 
 colnames(data) <- tolower(colnames(data))
@@ -33,7 +35,3 @@ df %>%
   scale_y_continuous(expand = c(0,0), 
                      breaks = 0:16) +
   theme(panel.grid = element_blank())
-
-
-read_csv("data/playoff_seeding/20162017", skip = 2)
-?read_csv
