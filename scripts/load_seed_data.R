@@ -19,8 +19,6 @@ for (i in seq_along(data_list)) {
   data_list[[i]] <- data_list[[i]][3:33, c(1, 2, 8)]
 }
 
-data_list[1]
-
 df_seeds <- bind_rows(data_list, .id = "season") %>% 
   rename(rank = X1,
          team = X2,
