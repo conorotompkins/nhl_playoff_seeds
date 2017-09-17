@@ -24,7 +24,9 @@ df_seeds <- bind_rows(data_list, .id = "season") %>%
          team = X2,
          points = X8) %>% 
   filter(team != "League Average") %>% 
-  mutate(team = str_replace(team, "\\*", ""))
+  mutate(team = str_replace(team, "\\*", ""),
+         rank = as.numeric(rank),
+         points = as.numeric(points))
 
 rm(list = c("data_list", "data_path"))
 
