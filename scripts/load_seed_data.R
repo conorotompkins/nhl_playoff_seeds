@@ -21,11 +21,12 @@ for (i in seq_along(data_list)) {
 
 data_list[1]
 
-team_seeds <- bind_rows(data_list, .id = "season") %>% 
+df_seeds <- bind_rows(data_list, .id = "season") %>% 
   rename(rank = X1,
          team = X2,
          points = X8) %>% 
   filter(team != "League Average") %>% 
   mutate(team = str_replace(team, "\\*", ""))
 
+rm(list = c("data_list", "data_path"))
 
